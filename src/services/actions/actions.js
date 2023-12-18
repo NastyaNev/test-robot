@@ -1,35 +1,45 @@
-import { getArray, getUsersNames } from "../../utils/api";
-import { getPosts, getPostsFailed, getPostsSuccess } from "../reducers/postsSlice";
-import { getUsers, getUsersFailed, getUsersSuccess } from "../reducers/usersSlice";
+import { useHttp } from "../../hooks/http.hook";
+import { getMetricsData } from "../../utils/api";
+import {
+  getMetrics,
+  getMetricsFailed,
+  getMetricsSuccess,
+} from "../reducers/metricsSlice";
+// import { getUsers, getUsersFailed, getUsersSuccess } from "../reducers/usersSlice";
 
-export function getItems() {
-    return function (dispatch) {
-        dispatch(getPosts());
-        return getArray().then(res => {
-            if (res) {
-                dispatch(getPostsSuccess(res));
-            } else {
-                dispatch(getPostsFailed());
-            }
-        })
-            .catch(err => {
-                console.log(err)
-            });
-    };
-}
+// const { request } = useHttp();
 
-export function getNames() {
-    return function (dispatch) {
-        dispatch(getUsers());
-        return getUsersNames().then(res => {
-            if (res) {
-                dispatch(getUsersSuccess(res));
-            } else {
-                dispatch(getUsersFailed());
-            }
-        })
-            .catch(err => {
-                console.log(err)
-            });
-    };
-}
+// export function getBasicMetrics() {
+//   return function (dispatch) {
+//     dispatch(getMetrics());
+//     const fetchData = async () => {
+//       const response = await request("http://localhost:8000/api?metrics");
+//       const data = await response;
+//       if (data.ok) {
+//         dispatch(getMetricsSuccess(data));
+//       } else {
+//         dispatch(getMetricsFailed());
+//       }
+//     };
+//     fetchData();
+//   }
+//   .catch((err) => {
+//     console.log(err);
+//   });
+// }
+
+// export function getNames() {
+//     return function (dispatch) {
+//         dispatch(getUsers());
+//         return getUsersNames().then(res => {
+//             if (res) {
+//                 dispatch(getUsersSuccess(res));
+//             } else {
+//                 dispatch(getUsersFailed());
+//             }
+//         })
+//             .catch(err => {
+//                 console.log(err)
+//             });
+//     };
+// }

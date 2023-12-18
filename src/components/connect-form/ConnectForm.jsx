@@ -12,7 +12,7 @@ function ConnectForm() {
   const [visible, setVisible] = useState(false);
 
   return (
-    <form class="connect_form">
+    <form className="connect_form">
       <label htmlFor="pass">
         <img src={wifi_icon} alt="wifi_icon" className='wifi_icon' />
         <span>{location.state.name}</span>

@@ -5,19 +5,19 @@ import App from './components/app/app';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
-import postsReducer from './services/reducers/postsSlice';
-import usersReducer from './services/reducers/usersSlice';
-import favoritesReducer from './services/reducers/favoritesSlice';
-import chooseReducer from './services/reducers/chooseSlice';
+import metricsReducer from './services/reducers/metricsSlice';
+// import usersReducer from './services/reducers/usersSlice';
+// import favoritesReducer from './services/reducers/favoritesSlice';
+// import chooseReducer from './services/reducers/chooseSlice';
 import { BrowserRouter } from 'react-router-dom';
 
 
 export const store = configureStore({
   reducer: {
-    posts: postsReducer,
-    users: usersReducer,
-    favorites: favoritesReducer,
-    choose: chooseReducer
+    metrics: metricsReducer,
+    // users: usersReducer,
+    // favorites: favoritesReducer,
+    // choose: chooseReducer
   }
 })
 
