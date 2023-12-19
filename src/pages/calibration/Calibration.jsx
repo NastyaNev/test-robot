@@ -2,27 +2,45 @@ import React from "react";
 import PageTitle from "../../components/page-title/PageTitle";
 import SliderForm from "../../components/slider-form/SliderForm";
 import "./Calibration.scss";
+import { useSelector } from "react-redux";
 
 function Calibration() {
-  const slidersCalibration = [
-    { name: "servo1", value: 300 },
-    { name: "servo2", value: 200 },
-    { name: "servo3", value: 30 },
-    { name: "servo4", value: 50 },
-    { name: "servo5", value: 10 },
-    { name: "servo6", value: 120 },
-    { name: "servo7", value: 190 },
-    { name: "servo8", value: 100 },
-    { name: "servo9", value: 70 },
-    { name: "servo10", value: 40 },
-    { name: "servo11", value: 250 },
-    { name: "servo12", value: 230 },
+  const sliderNamesCalibration = [
+    "Название1",
+    "Название2",
+    "Название3",
+    "Название4",
+    "Название5",
+    "Название6",
+    "Название7",
+    "Название8",
+    "Название9",
+    "Название10",
+    "Название11",
+    "Название12"
   ];
+
+  const metrics = useSelector((state) => state.metrics.metrics);
+
+  const basicMetricsCalibration = [];
+
+  let ind = 0;
+
+  for (const value of Object.values(metrics).slice(3)) {
+    basicMetricsCalibration.push({
+      name: sliderNamesCalibration[ind],
+      value: value,
+    });
+    ind++;
+  }
 
   return (
     <div className="calibration">
       <PageTitle title="калибровка" className="calibration__title" />
-      <SliderForm array={slidersCalibration} className="calibration__inputs_container" />
+      <SliderForm
+        array={basicMetricsCalibration}
+        className="calibration__inputs_container"
+      />
     </div>
   );
 }

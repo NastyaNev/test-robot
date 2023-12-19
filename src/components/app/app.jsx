@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./app.scss";
 import { Route, Routes } from "react-router";
 import Layout from "../layout/Layout";
@@ -8,8 +8,28 @@ import WifiList from "../wifi-list/WifiList";
 import ConnectForm from "../connect-form/ConnectForm";
 import NotFound from "../../pages/not-found/NotFound";
 import Wifi from "../../pages/wifi/Wifi";
+import { useDispatch } from "react-redux";
+import { useHttp } from "../../hooks/http.hook";
+import { getMetrics, getMetricsFailed, getMetricsSuccess } from "../../services/reducers/metricsSlice";
 
 function App() {
+  const dispatch = useDispatch();
+
+  const { request } = useHttp();
+  useEffect(() => {
+    dispatch(getMetrics());
+    const fetchData = async () => {
+      const response = await request("http://localhost:8000/api/metrics");
+      const data = await response;
+      if (data) {
+        dispatch(getMetricsSuccess(data));
+      } else {
+        dispatch(getMetricsFailed());
+      }
+    };
+    fetchData();
+  }, []);
+
   return (
     <Routes>
       <Route path="/" element={<Layout />}>

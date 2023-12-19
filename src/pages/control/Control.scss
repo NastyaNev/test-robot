@@ -2,8 +2,13 @@
     padding-bottom: 132px;
 
     &__d_pads {
-        height: 709px;
+        height: calc(709px - 15px - 102px);
         background-color: #292424;
+        display: flex;
+        padding-top: 15px;
+        margin: 0 auto;
+        padding-bottom: 102px;
+        justify-content: space-between;
     }
 
     &__calibration {

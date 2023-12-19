@@ -20,8 +20,8 @@ export const metricsSlice = createSlice({
     getMetricsFailed: (state) => {
       state.metrics = {
         spi_hight: 50,
-        step_hight: 50,
-        step_length: 50,
+        step_hight: 100,
+        step_length: 150,
         l1: 300,
         ll1: 300,
         l2: 300,
@@ -37,7 +37,7 @@ export const metricsSlice = createSlice({
       };
       state.apiRequest = false;
       state.apiFailed = true;
-    },
+    }
   },
 });
 

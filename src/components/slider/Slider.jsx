@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "./Slider.scss";
 
 function Slider({ slider }) {
-  const [value, setValue] = useState(slider.value);
-
   useEffect(() => {
     const textInput = document.getElementById(`amount${slider.name}`);
     textInput.addEventListener("keydown", (e) => {
@@ -24,7 +22,7 @@ function Slider({ slider }) {
           min="0"
           max="300"
           step="10"
-          defaultValue={value}
+          defaultValue={slider.value}
           className="slider"
           id={`myRange${slider.name}`}
           onInput={() =>
@@ -41,7 +39,7 @@ function Slider({ slider }) {
             (document.getElementById(`myRange${slider.name}`).value =
               document.getElementById(`amount${slider.name}`).value)
           }
-          defaultValue={value}
+          defaultValue={slider.value}
           className="slider_value"
         />
       </div>

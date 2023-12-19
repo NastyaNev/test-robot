@@ -26,21 +26,12 @@ export const useHttp = () => {
         setLoading(false);
         return data;
       } catch (error) {
-        if (error instanceof TypeError && error.message.includes('API key')) {
-          console.error('Invalid API key:', error);
+        if (error instanceof TypeError && error.message.includes("API key")) {
+          console.error("Invalid API key:", error);
         } else {
-          console.error('There was a problem with the Fetch operation:', error);
-        }}
-      
-      
-      
-      
-      
-      // catch (e) {
-      //   setLoading(false);
-      //   setError(e.message);
-      //   throw e;
-      // }
+          console.error("There was a problem with the Fetch operation:", error);
+        }
+      }
     },
     []
   );
