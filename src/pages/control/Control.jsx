@@ -4,32 +4,87 @@ import { useSelector } from "react-redux";
 import Dpad from "../../components/d-pad/Dpad";
 import PageTitle from "../../components/page-title/PageTitle";
 import SliderForm from "../../components/slider-form/SliderForm";
+import { useHttp } from "../../hooks/http.hook";
 
 function Control() {
   const sliderNamesControl = ["Общая высота", "Высота шага", "Длина шага"];
-  const basicMetrics = useSelector((state) => state.metrics.metrics);
-
-  const [metrics, setMetrics] = useState({});
+  const metrics = useSelector((state) => state.metrics.metrics);
+  const [basicMetricsControl, setBasicMetricsControl] = useState([]);
 
   useEffect(() => {
-    setMetrics(basicMetrics);
-  }, [basicMetrics]);
+    let ind = 0;
+    const slidersData = [];
+    for (const value of Object.values(metrics).slice(0, 3)) {
+      slidersData.push({
+        name: sliderNamesControl[ind],
+        value: value,
+        id: `slider${ind + 1}`,
+      });
+      ind++;
+    }
+    setBasicMetricsControl(slidersData);
+  }, [metrics]);
 
-  const basicMetricsControl = [];
+  const { request } = useHttp();
 
-  let ind = 0;
+  const apiRequest = async (endPoint) => {
+    const fetchData = async () => {
+      await request(`http://localhost:8000/api/${endPoint}`);
+    };
+    fetchData();
+  };
 
-  for (const value of Object.values(metrics).slice(0, 3)) {
-    basicMetricsControl.push({ name: sliderNamesControl[ind], value: value });
-    ind++;
+  const apiSliderChangeControl = async (values) => {
+    await request(
+      "http://localhost:8000/api/set_set",
+      "POST",
+      JSON.stringify(values),
+      {
+        Accept: "application/x-www-form-urlencoded",
+        "Content-Type": "application/x-www-form-urlencoded",
+      }
+    );
+  };
+
+  function onMove(e) {
+    if (e.code === "KeyW") {
+      apiRequest("fw");
+    } else if (e.code === "KeyA") {
+      apiRequest("lf");
+    } else if (e.code === "KeyS") {
+      apiRequest("bk");
+    } else if (e.code === "KeyD") {
+      apiRequest("rt");
+    } else if (e.code === "ArrowLeft") {
+      e.preventDefault();
+      apiRequest("lf");
+    } else if (e.code === "ArrowDown") {
+      e.preventDefault();
+      apiRequest("bk");
+    } else if (e.code === "ArrowRight") {
+      e.preventDefault();
+      apiRequest("rt");
+    } else if (e.code === "ArrowUp") {
+      e.preventDefault();
+      apiRequest("fw");
+    }
   }
+
+  useEffect(() => {
+    document.addEventListener("keydown", onMove);
+
+    return () => document.removeEventListener("keydown", onMove);
+  }, []);
 
   return (
     <div className="control">
-        <div className="control__d_pads">
-          <Dpad title="wasd" type="letters" />
-          <Dpad title="&#129120;&#129121;&#129122;&#129123;" type="arrows" />
-        </div>
+      <div className="control__d_pads">
+        <Dpad title="wasd" apiRequest={apiRequest} />
+        <Dpad
+          title="&#129120;&#129121;&#129122;&#129123;"
+          apiRequest={apiRequest}
+        />
+      </div>
       <div className="control__calibration">
         <PageTitle
           title="настройка высоты и длины шага"
@@ -38,6 +93,7 @@ function Control() {
         <SliderForm
           array={basicMetricsControl}
           className="control__calibration__inputs_container"
+          apiSliderChange={apiSliderChangeControl}
         />
       </div>
     </div>

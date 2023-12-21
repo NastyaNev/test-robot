@@ -1,28 +1,27 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.scss';
-import App from './components/app/app';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.scss";
+import App from "./components/app/app";
+import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
-import metricsReducer from './services/reducers/metricsSlice';
-import { BrowserRouter } from 'react-router-dom';
-
+import metricsReducer from "./services/reducers/metricsSlice";
+import metricsControlReducer from "./services/reducers/metricsControlSlice";
+import { BrowserRouter } from "react-router-dom";
 
 export const store = configureStore({
   reducer: {
     metrics: metricsReducer,
-  }
-})
+    metricsControl: metricsControlReducer,
+  },
+});
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
-    <React.StrictMode>
-      <BrowserRouter basename="/">
-        <App />
-      </BrowserRouter>
-    </React.StrictMode>
+    <BrowserRouter basename="/">
+      <App />
+    </BrowserRouter>
   </Provider>
 );
 
@@ -30,4 +29,3 @@ root.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
-

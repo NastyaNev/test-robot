@@ -13,7 +13,8 @@
     }
 
     &__title {
-        margin: 24px auto 158px;
+        padding: 24px 0 158px;
+        margin: auto;
     }
 
     @media(max-width: 1200px) {

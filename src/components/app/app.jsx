@@ -18,20 +18,18 @@ import {
 
 function App() {
   const dispatch = useDispatch();
+
   const { request } = useHttp();
 
   useEffect(() => {
     dispatch(getMetrics());
     const fetchData = async () => {
       const response = await request("http://localhost:8000/api/metrics");
-      const data = await response;
-      if (data) {
-        dispatch(getMetricsSuccess(data));
-      } else {
-        dispatch(getMetricsFailed());
-      }
+      dispatch(getMetricsSuccess(response));
     };
-    fetchData();
+    fetchData().catch(() => {
+      dispatch(getMetricsFailed());
+    });
   }, []);
 
   return (

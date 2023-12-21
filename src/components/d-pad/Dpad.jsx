@@ -1,47 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./Dpad.scss";
-import { useDispatch } from "react-redux";
-import { useHttp } from "../../hooks/http.hook";
 
-function Dpad({ title, type }) {
-  const { request } = useHttp();
-
-  const apiRequest = (endPoint) => {
-    const fetchData = async () => {
-      await request(`http://localhost:8000/api/${endPoint}`);
-    };
-    fetchData();
-  };
-
-  function onMove(e) {
-    if (e.code === "KeyW") {
-      apiRequest("fw");
-    } else if (e.code === "KeyA") {
-      apiRequest("lf");
-    } else if (e.code === "KeyS") {
-      apiRequest("bk");
-    } else if (e.code === "KeyD") {
-      apiRequest("rt");
-    } else if (e.code === "ArrowLeft") {
-      e.preventDefault();
-      apiRequest("lf");
-    } else if (e.code === "ArrowDown") {
-      e.preventDefault();
-      apiRequest("bk");
-    } else if (e.code === "ArrowRight") {
-      e.preventDefault();
-      apiRequest("rt");
-    } else if (e.code === "ArrowUp") {
-      e.preventDefault();
-      apiRequest("fw");
-    }
-  }
-
-  useEffect(() => {
-    document.addEventListener("keydown", onMove);
-
-    return () => document.removeEventListener("keydown", onMove);
-  }, []);
+function Dpad({ title, apiRequest }) {
 
   return (
     <div className="d_pad">

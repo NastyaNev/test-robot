@@ -1,7 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./Slider.scss";
 
-function Slider({ slider }) {
+function Slider({ slider, setValues }) {
+  const [value, setValue] = useState(slider.value);
+  const prevValue = useRef(value);
+
   const onEnter = (e) => {
     if (e.key === "Enter") {
       e.target.blur();
@@ -26,13 +29,21 @@ function Slider({ slider }) {
           min="0"
           max="300"
           step="10"
-          defaultValue={slider.value}
+          value={value}
           className="slider"
           id={`myRange${slider.name}`}
           onInput={() =>
-            (document.getElementById(`amount${slider.name}`).value =
-              document.getElementById(`myRange${slider.name}`).value)
+            setValue(
+              (document.getElementById(`amount${slider.name}`).value =
+                document.getElementById(`myRange${slider.name}`).value)
+            )
           }
+          onMouseUp={() => {
+            if (value !== prevValue.current) {
+              prevValue.current = value;
+              setValues((values) => ({ ...values, [slider.id]: value }));
+            }
+          }}
         />
         <input
           type="number"
