@@ -12,8 +12,8 @@ function Control() {
   const [metrics, setMetrics] = useState({});
 
   useEffect(() => {
-    setMetrics(basicMetrics)
-  }, [basicMetrics])
+    setMetrics(basicMetrics);
+  }, [basicMetrics]);
 
   const basicMetricsControl = [];
 
@@ -26,10 +26,10 @@ function Control() {
 
   return (
     <div className="control">
-      <div className="control__d_pads">
-        <Dpad />
-        <Dpad />
-      </div>
+        <div className="control__d_pads">
+          <Dpad title="wasd" type="letters" />
+          <Dpad title="&#129120;&#129121;&#129122;&#129123;" type="arrows" />
+        </div>
       <div className="control__calibration">
         <PageTitle
           title="настройка высоты и длины шага"

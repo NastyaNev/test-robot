@@ -2,13 +2,17 @@ import React, { useEffect } from "react";
 import "./Slider.scss";
 
 function Slider({ slider }) {
+  const onEnter = (e) => {
+    if (e.key === "Enter") {
+      e.target.blur();
+    }
+  };
+
   useEffect(() => {
     const textInput = document.getElementById(`amount${slider.name}`);
-    textInput.addEventListener("keydown", (e) => {
-      if (e.key === "Enter") {
-        e.target.blur();
-      }
-    });
+    textInput.addEventListener("keydown", onEnter);
+
+    return () => textInput.removeEventListener("keydown", onEnter);
   }, []);
 
   return (

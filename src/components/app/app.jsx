@@ -10,12 +10,16 @@ import NotFound from "../../pages/not-found/NotFound";
 import Wifi from "../../pages/wifi/Wifi";
 import { useDispatch } from "react-redux";
 import { useHttp } from "../../hooks/http.hook";
-import { getMetrics, getMetricsFailed, getMetricsSuccess } from "../../services/reducers/metricsSlice";
+import {
+  getMetrics,
+  getMetricsFailed,
+  getMetricsSuccess,
+} from "../../services/reducers/metricsSlice";
 
 function App() {
   const dispatch = useDispatch();
-
   const { request } = useHttp();
+
   useEffect(() => {
     dispatch(getMetrics());
     const fetchData = async () => {
