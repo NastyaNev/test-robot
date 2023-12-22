@@ -6,13 +6,13 @@ import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 import metricsReducer from "./services/reducers/metricsSlice";
-import metricsControlReducer from "./services/reducers/metricsControlSlice";
+import wifiReducer from "./services/reducers/wifiSlice";
 import { BrowserRouter } from "react-router-dom";
 
 export const store = configureStore({
   reducer: {
     metrics: metricsReducer,
-    metricsControl: metricsControlReducer,
+    wifiList: wifiReducer,
   },
 });
 

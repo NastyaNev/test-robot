@@ -28,10 +28,7 @@ function Control() {
   const { request } = useHttp();
 
   const apiRequest = async (endPoint) => {
-    const fetchData = async () => {
       await request(`http://localhost:8000/api/${endPoint}`);
-    };
-    fetchData();
   };
 
   const apiSliderChangeControl = async (values) => {
@@ -94,6 +91,7 @@ function Control() {
           array={basicMetricsControl}
           className="control__calibration__inputs_container"
           apiSliderChange={apiSliderChangeControl}
+          slidersSaveEndPoint={'save_set'}
         />
       </div>
     </div>

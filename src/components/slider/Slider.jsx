@@ -6,7 +6,7 @@ function Slider({ slider, setValues }) {
   const prevValue = useRef(value);
 
   const onEnter = (e) => {
-    if (e.key === "Enter") {
+    if (e.code === "Enter") {
       e.target.blur();
     }
   };
@@ -50,12 +50,17 @@ function Slider({ slider, setValues }) {
           id={`amount${slider.name}`}
           min="0"
           max="300"
-          onInput={() =>
-            (document.getElementById(`myRange${slider.name}`).value =
-              document.getElementById(`amount${slider.name}`).value)
-          }
+          onInput={() => {
+            setValue(
+              (document.getElementById(`myRange${slider.name}`).value =
+                document.getElementById(`amount${slider.name}`).value)
+            );
+          }}
           defaultValue={slider.value}
           className="slider_value"
+          onBlur={(e) =>
+            setValues((values) => ({ ...values, [slider.id]: e.target.value }))
+          }
         />
       </div>
     </li>

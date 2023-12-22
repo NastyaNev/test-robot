@@ -12,8 +12,6 @@ import { useDispatch } from "react-redux";
 import { useHttp } from "../../hooks/http.hook";
 import {
   getMetrics,
-  getMetricsFailed,
-  getMetricsSuccess,
 } from "../../services/reducers/metricsSlice";
 
 function App() {
@@ -22,14 +20,11 @@ function App() {
   const { request } = useHttp();
 
   useEffect(() => {
-    dispatch(getMetrics());
     const fetchData = async () => {
       const response = await request("http://localhost:8000/api/metrics");
-      dispatch(getMetricsSuccess(response));
+      dispatch(getMetrics(response));
     };
-    fetchData().catch(() => {
-      dispatch(getMetricsFailed());
-    });
+    fetchData();
   }, []);
 
   return (

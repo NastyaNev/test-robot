@@ -4,8 +4,9 @@ import Button from "../button/Button";
 import "./SliderForm.scss";
 import { useHttp } from "../../hooks/http.hook";
 
-function SliderForm({ array, className, apiSliderChange }) {
+function SliderForm({ array, className, apiSliderChange, slidersSaveEndPoint }) {
   const [values, setValues] = useState({});
+  const { request } = useHttp();
 
   useEffect(() => {
     const initialValues = {};
@@ -17,14 +18,25 @@ function SliderForm({ array, className, apiSliderChange }) {
     setValues(initialValues);
   }, [array]);
 
-  const { request } = useHttp();
-
   useEffect(() => {
     apiSliderChange(values).catch(console.error);
   }, [values]);
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await request(
+      `http://localhost:8000/api/${slidersSaveEndPoint}`,
+      "POST",
+      JSON.stringify(values),
+      {
+        Accept: "application/x-www-form-urlencoded",
+        "Content-Type": "application/x-www-form-urlencoded",
+      }
+    );
+  };
+
   return (
-    <form className="slider_form">
+    <form className="slider_form" onSubmit={handleSubmit}>
       <ul className={className}>
         {array.map((slider, index) => (
           <Slider key={index} slider={slider} setValues={setValues} />

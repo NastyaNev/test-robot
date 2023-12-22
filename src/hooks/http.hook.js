@@ -25,6 +25,14 @@ class FakeResponse {
         r3: 300,
         rr3: 300,
       };
+    } else if (this.url == "http://localhost:8000/api/wifi") {
+      return [
+        { name: "wifi1" },
+        { name: "wifi3" },
+        { name: "wifi5" },
+        { name: "wifi7" },
+        { name: "wifi8" },
+      ];
     }
 
     return {

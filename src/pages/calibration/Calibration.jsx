@@ -59,6 +59,7 @@ function Calibration() {
         array={basicMetricsCalibration}
         className="calibration__inputs_container"
         apiSliderChange={apiSliderChangeCalibration}
+        slidersSaveEndPoint={'save'}
       />
     </div>
   );
