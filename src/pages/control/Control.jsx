@@ -31,18 +31,6 @@ function Control() {
       await request(`http://localhost:8000/api/${endPoint}`);
   };
 
-  const apiSliderChangeControl = async (values) => {
-    await request(
-      "http://localhost:8000/api/set_set",
-      "POST",
-      JSON.stringify(values),
-      {
-        Accept: "application/x-www-form-urlencoded",
-        "Content-Type": "application/x-www-form-urlencoded",
-      }
-    );
-  };
-
   function onMove(e) {
     if (e.code === "KeyW") {
       apiRequest("fw");
@@ -90,7 +78,7 @@ function Control() {
         <SliderForm
           array={basicMetricsControl}
           className="control__calibration__inputs_container"
-          apiSliderChange={apiSliderChangeControl}
+          sliderChangeEndPoint={"set_set"}
           slidersSaveEndPoint={'save_set'}
         />
       </div>

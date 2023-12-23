@@ -1,7 +1,17 @@
 import { useState, useCallback } from "react";
+import { useSelector } from "react-redux";
+
+const wifiList = {
+  wifi1: "jnkrnje",
+  wifi3: "jnkrnje",
+  wifissid: "11345678",
+  wifi7: "jnkrnje",
+  wifi8: "jnkrnje",
+};
 
 class FakeResponse {
-  constructor(url) {
+  constructor(url, body) {
+    this.body = body;
     this.url = url;
     this.ok = true;
   }
@@ -25,14 +35,12 @@ class FakeResponse {
         r3: 300,
         rr3: 300,
       };
+    } else if (this.url == "http://localhost:8000/api/get_ssid") {
+      return wifiList;
     } else if (this.url == "http://localhost:8000/api/wifi") {
-      return [
-        { name: "wifi1" },
-        { name: "wifi3" },
-        { name: "wifi5" },
-        { name: "wifi7" },
-        { name: "wifi8" },
-      ];
+      return wifiList[this.body];
+    } else if (this.url.includes(`&password=${this.body}`)) {
+      return this.body;
     }
 
     return {
@@ -45,7 +53,7 @@ async function fakeFetch(url, options) {
   console.log("url", url);
   console.log("options", options);
 
-  return new FakeResponse(url);
+  return new FakeResponse(url, options.body);
 }
 
 export const useHttp = () => {

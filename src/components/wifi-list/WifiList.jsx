@@ -8,20 +8,12 @@ import { useHttp } from '../../hooks/http.hook';
 function WifiList() {
   const dispatch = useDispatch();
   const wifiList = useSelector(state => state.wifiList.wifiList);
+  const ssidList = Object.keys(wifiList);
   const { request } = useHttp();
-
-  // const wifiList = [
-  //   {name: 'wifi1'},
-  //   {name: 'wifi3'},
-  //   {name: 'wifi5'},
-  //   {name: 'wifi7'},
-  //   {name: 'wifi8'},
-  // ]
-
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await request("http://localhost:8000/api/wifi");
+      const response = await request("http://localhost:8000/api/get_ssid");
       dispatch(getWifiList(response));
     };
     fetchData()
@@ -31,8 +23,8 @@ function WifiList() {
     <div>
     <nav className="wifi_list">
       {
-        wifiList.map(wifi => (
-          <WifiItem key={wifi.name} name={wifi.name} />
+        ssidList.map((wifi, index) => (
+          <WifiItem key={index} name={wifi} />
         ))
       }
     </nav>
