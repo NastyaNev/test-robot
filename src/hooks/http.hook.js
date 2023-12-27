@@ -1,5 +1,4 @@
 import { useState, useCallback } from "react";
-import { useSelector } from "react-redux";
 
 const wifiList = {
   wifi1: "jnkrnje",
@@ -39,8 +38,8 @@ class FakeResponse {
       return wifiList;
     } else if (this.url == "http://localhost:8000/api/wifi") {
       return wifiList[this.body];
-    } else if (this.url.includes(`&password=${this.body}`)) {
-      return this.body;
+    } else if (this.url.includes(`&password`)) {
+      return wifiList[this.body["ssid"]] === this.body["password"] ? this.ok = true : this.ok = false
     }
 
     return {

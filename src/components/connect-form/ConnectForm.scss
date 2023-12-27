@@ -35,6 +35,10 @@
             &:focus {
                 outline: 1px solid #575757;
             }
+
+            &__warning {
+                outline: 1px solid red;
+            }
         }
 
         &__eye_icon {
@@ -44,6 +48,24 @@
             background-color: #E5E5E5;
             padding-left: 12px;
             cursor: pointer;
+        }
+
+        &__warning {
+            position: absolute;
+            background-color: bisque;
+            padding: 8px;
+            font-size: 15px;
+            font-weight: 400;
+            color: red;
+            border-radius: 5px;
+            outline: 0.5px solid gray;
+            top: calc(15px + 19px + 14px + 2px);
+            z-index: 10;
+            display: none;
+        }
+
+        &__warning_visible {
+            display: block;
         }
     }
 }

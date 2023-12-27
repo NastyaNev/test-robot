@@ -1,15 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import wifi_icon from "../../images/fa6-solid_wifi.svg";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./ConnectForm.scss";
 import Button from "../button/Button";
 import eye from "../../images/eye.svg";
 import eyeCrossed from "../../images/eye_crossed.svg";
-import {
-  getConnection,
-  getConnectionStatus,
-} from "../../services/reducers/wifiSlice";
-import { useDispatch, useSelector } from "react-redux";
 import { useHttp } from "../../hooks/http.hook";
 
 function ConnectForm() {
@@ -17,19 +12,22 @@ function ConnectForm() {
   const ssid = location.state.name;
   const [password, setPassword] = useState("");
   const [visible, setVisible] = useState(false);
-  const dispatch = useDispatch();
   const { request } = useHttp();
-  const status = useSelector((state) => state.wifiList.status);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const response = await request(
       `http://localhost:8000/api/connect?ssid=${ssid}&password=${password}`,
       "GET",
-      password
+      { password, ssid }
     );
-    dispatch(getConnection(response));
-    dispatch(getConnectionStatus());
+    if (response) {
+      navigate("/wifi/", { state: { ssid } });
+    } else {
+      document.getElementById('pass').classList.add("input_container__input__warning");
+      document.getElementById('warning').classList.add("input_container__warning_visible");
+    }
   };
 
   return (
@@ -44,6 +42,7 @@ function ConnectForm() {
           type={visible ? "text" : "password"}
           onChange={(e) => {
             setPassword(e.target.value);
+            document.getElementById('warning').classList.remove("input_container__warning_visible");
           }}
           value={password}
           id="pass"
@@ -57,6 +56,7 @@ function ConnectForm() {
           onClick={() => setVisible(!visible)}
           className="input_container__eye_icon"
         />
+        <span className="input_container__warning" id="warning">Wrong password</span>
       </div>
       <Button text="Подключиться" />
     </form>

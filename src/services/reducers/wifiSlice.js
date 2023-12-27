@@ -2,9 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export const initialState = {
   wifiList: {},
-  requestedPass: '',
-  passedPass: '',
-  status: false
+  requiredPass: ''
 };
 
 export const wifiSlice = createSlice({
@@ -15,19 +13,11 @@ export const wifiSlice = createSlice({
         state.wifiList = action.payload;
     },
     getConnectForm: (state, action) => {
-      state.requestedPass = action.payload;
-    },
-    getConnection: (state, action) => {
-      state.passedPass = action.payload;
-    },
-    getConnectionStatus: (state) => {
-      if (state.passedPass === state.requestedPass) {
-        state.status = true;
-      } else {state.status = false;}
+      state.requiredPass = action.payload;
     }
   },
 });
 
-export const { getWifiList, getConnectForm, getConnectionStatus, getConnection } =
+export const { getWifiList, getConnectForm } =
   wifiSlice.actions;
 export default wifiSlice.reducer;
