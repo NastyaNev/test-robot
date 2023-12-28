@@ -19,9 +19,11 @@ export const store = configureStore({
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
-    <BrowserRouter basename="/">
-      <App />
-    </BrowserRouter>
+    <React.StrictMode>
+      <BrowserRouter basename="/test-robot">
+        <App />
+      </BrowserRouter>
+    </React.StrictMode>
   </Provider>
 );
 
