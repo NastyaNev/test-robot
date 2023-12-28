@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "./static/css/main.e86f16dc.css",
-    "main.js": "./static/js/main.e6807540.js",
-    "static/js/787.85b52fa0.chunk.js": "./static/js/787.85b52fa0.chunk.js",
-    "static/media/logo.svg": "./static/media/logo.30f79e1b82ffde814a88c4c21031ab13.svg",
-    "static/media/eye_crossed.svg": "./static/media/eye_crossed.c00998d82a3af5efeeca81d961684f2c.svg",
-    "static/media/eye.svg": "./static/media/eye.87d11e0e608c2e27cbc9d553509f6ca8.svg",
-    "static/media/fa6-solid_wifi.svg": "./static/media/fa6-solid_wifi.2631b288af41acd5066e60b5b42d2a05.svg",
-    "static/media/fa6-solid_wifi_active.svg": "./static/media/fa6-solid_wifi_active.e992a15a7fbe5880116351ad19e9f51c.svg",
-    "index.html": "./index.html",
-    "static/media/three_stripes.svg": "./static/media/three_stripes.9bd02a0d5887e3053c79.svg",
-    "main.e86f16dc.css.map": "./static/css/main.e86f16dc.css.map",
-    "main.e6807540.js.map": "./static/js/main.e6807540.js.map",
-    "787.85b52fa0.chunk.js.map": "./static/js/787.85b52fa0.chunk.js.map"
+    "main.css": "/test-robot/static/css/main.60ec1d2d.css",
+    "main.js": "/test-robot/static/js/main.11089e8f.js",
+    "static/js/787.85b52fa0.chunk.js": "/test-robot/static/js/787.85b52fa0.chunk.js",
+    "static/media/logo.svg": "/test-robot/static/media/logo.30f79e1b82ffde814a88c4c21031ab13.svg",
+    "static/media/eye_crossed.svg": "/test-robot/static/media/eye_crossed.c00998d82a3af5efeeca81d961684f2c.svg",
+    "static/media/eye.svg": "/test-robot/static/media/eye.87d11e0e608c2e27cbc9d553509f6ca8.svg",
+    "static/media/fa6-solid_wifi.svg": "/test-robot/static/media/fa6-solid_wifi.2631b288af41acd5066e60b5b42d2a05.svg",
+    "static/media/fa6-solid_wifi_active.svg": "/test-robot/static/media/fa6-solid_wifi_active.e992a15a7fbe5880116351ad19e9f51c.svg",
+    "index.html": "/test-robot/index.html",
+    "static/media/three_stripes.svg": "/test-robot/static/media/three_stripes.9bd02a0d5887e3053c79.svg",
+    "main.60ec1d2d.css.map": "/test-robot/static/css/main.60ec1d2d.css.map",
+    "main.11089e8f.js.map": "/test-robot/static/js/main.11089e8f.js.map",
+    "787.85b52fa0.chunk.js.map": "/test-robot/static/js/787.85b52fa0.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e86f16dc.css",
-    "static/js/main.e6807540.js"
+    "static/css/main.60ec1d2d.css",
+    "static/js/main.11089e8f.js"
   ]
 }
