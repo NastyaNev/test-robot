@@ -20,7 +20,7 @@ function Slider({ slider, setValues }) {
 
   return (
     <li className="slider_container">
-      <label htmlFor="myRange" className="slider_name">
+      <label htmlFor={`myRange${slider.name}`} className="slider_name">
         {slider.name}
       </label>
       <div className="inputs">
