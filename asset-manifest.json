@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/test-robot/static/css/main.60ec1d2d.css",
-    "main.js": "/test-robot/static/js/main.11089e8f.js",
+    "main.js": "/test-robot/static/js/main.a8a46fbe.js",
     "static/js/787.85b52fa0.chunk.js": "/test-robot/static/js/787.85b52fa0.chunk.js",
     "static/media/logo.svg": "/test-robot/static/media/logo.30f79e1b82ffde814a88c4c21031ab13.svg",
     "static/media/eye_crossed.svg": "/test-robot/static/media/eye_crossed.c00998d82a3af5efeeca81d961684f2c.svg",
@@ -11,11 +11,11 @@
     "index.html": "/test-robot/index.html",
     "static/media/three_stripes.svg": "/test-robot/static/media/three_stripes.9bd02a0d5887e3053c79.svg",
     "main.60ec1d2d.css.map": "/test-robot/static/css/main.60ec1d2d.css.map",
-    "main.11089e8f.js.map": "/test-robot/static/js/main.11089e8f.js.map",
+    "main.a8a46fbe.js.map": "/test-robot/static/js/main.a8a46fbe.js.map",
     "787.85b52fa0.chunk.js.map": "/test-robot/static/js/787.85b52fa0.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.60ec1d2d.css",
-    "static/js/main.11089e8f.js"
+    "static/js/main.a8a46fbe.js"
   ]
 }
