@@ -1,0 +1,33 @@
+.click-button {
+    position: absolute;
+    left: 4%;
+    top: 28%;
+    color: white;
+    text-transform: lowercase;
+    font-size: 20px;
+    opacity: 0;
+    display: none;
+    width: 100px;
+}
+
+.click-button_visible {
+    display: block;
+    animation: blink 2s infinite;
+    animation-iteration-count: 3;
+}
+
+@keyframes blink {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@media (max-width: 767px) {
+    .click-button {
+        left: 21%;
+    }
+}

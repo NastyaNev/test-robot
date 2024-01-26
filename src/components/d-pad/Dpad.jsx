@@ -1,10 +1,12 @@
 import React from "react";
 import "./Dpad.scss";
+import ClickButton from "../click-button/ClickButton";
 
 function Dpad({ title, apiRequest }) {
 
   return (
     <div className="d_pad">
+      <ClickButton />
       <h3 className="d_pad__title">{title}</h3>
       <svg
         width="325"

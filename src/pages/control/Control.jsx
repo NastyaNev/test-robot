@@ -5,6 +5,7 @@ import Dpad from "../../components/d-pad/Dpad";
 import PageTitle from "../../components/page-title/PageTitle";
 import SliderForm from "../../components/slider-form/SliderForm";
 import { useHttp } from "../../hooks/http.hook";
+import Console from "../../components/concole/Console";
 
 function Control() {
   const sliderNamesControl = ["Общая высота", "Высота шага", "Длина шага"];
@@ -63,6 +64,7 @@ function Control() {
 
   return (
     <div className="control">
+      <Console />
       <div className="control__d_pads">
         <Dpad title="wasd" apiRequest={apiRequest} />
         <Dpad
