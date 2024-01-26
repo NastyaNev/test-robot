@@ -1,3 +1,9 @@
 main {
-    margin: 199px auto 0px;
+    margin: 192px auto 0px;
+}
+
+@media (max-width: 767px) {
+    main {
+        margin: 268px auto 0px;
+    }
 }

@@ -7,9 +7,9 @@ function Dpad({ title, apiRequest }) {
     <div className="d_pad">
       <h3 className="d_pad__title">{title}</h3>
       <svg
-        width="365"
-        height="366"
-        viewBox="0 0 365 366"
+        width="325"
+        height="325"
+        viewBox="17 8 325 325"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >

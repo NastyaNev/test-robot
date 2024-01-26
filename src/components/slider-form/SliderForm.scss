@@ -5,6 +5,11 @@
     margin: 0 auto;
     width: fit-content;
 
+    @media (max-width: 1279px) {
+        padding: 0 6%;
+        align-items: center;
+    }
+
     &__button_container {
         display: flex;
         justify-content: flex-end;

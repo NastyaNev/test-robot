@@ -4,6 +4,7 @@
     flex-direction: column;
     text-transform: uppercase;
     align-items: center;
+    gap: 24px;
 
     &__title {
         margin: 0;
@@ -14,7 +15,7 @@
             font-size: 40px;
             line-height: 48px;
             letter-spacing: 15px;
-            padding: 15px 0 0 15px;
+            padding: 22px 0 0 15px;
     }
 
     &__button {

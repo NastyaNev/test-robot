@@ -3,19 +3,41 @@
     margin: 0 auto;
 
     &__d_pads {
-        height: calc(709px - 45px - 102px);
+        height: 412px;
         width: 100%;
         display: flex;
         background-color: #292424;
         justify-content: center;
         padding: 0 0 102px;
-        gap: 28%;
+        gap: 560px;
+    }
+
+    @media (max-width: 2000px) {
+        &__d_pads {
+            gap: 28%;
+        }
+    }
+
+    @media (max-width: 1079px) {
+        &__d_pads {
+            gap: 10%;
+        }
+    }
+
+    @media (max-width: 767px) {
+        &__d_pads {
+            display: flex;
+            flex-direction: column;
+            height: fit-content;
+            gap: 100px;
+        }
     }
 
     &__calibration {
         &__title {
             margin: 40px auto 32px;
-
+            text-align: center;
+            padding: 0 10%;
         }
 
         &__inputs_container {

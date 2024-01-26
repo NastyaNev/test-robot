@@ -1,10 +1,12 @@
 .wifi_page {
-    width: calc(100vw - 160px);
+    width: calc(100vw - 10%);
     margin: 0 auto;
     padding-bottom: 141px;
+    max-width: 1280px;
 
     &__title {
         padding: 24px 0 48px;
         margin: auto;
+        text-align: center;
     }
 }

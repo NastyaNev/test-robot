@@ -72,7 +72,7 @@ function Control() {
       </div>
       <div className="control__calibration">
         <PageTitle
-          title="настройка высоты и длины шага"
+          title="настройки высоты и длины шага"
           className="control__calibration__title"
         />
         <SliderForm
