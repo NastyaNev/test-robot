@@ -5,22 +5,24 @@
     text-transform: uppercase;
     align-items: center;
     gap: 24px;
-    position: relative;
 
     &__title {
         margin: 0;
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
             'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
             sans-serif;
-            font-weight: 400;
-            font-size: 40px;
-            line-height: 48px;
-            letter-spacing: 15px;
-            padding: 22px 0 0 15px;
+        font-weight: 400;
+        font-size: 40px;
+        line-height: 48px;
+        letter-spacing: 15px;
+        padding: 22px 0 0 15px;
     }
 
-    &__button {
-        cursor: pointer;
-    }
+    &__container {
+        position: relative;
 
+        &__button {
+            cursor: pointer;
+        }
+    }
 }
